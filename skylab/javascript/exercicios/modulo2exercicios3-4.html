@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul></ul>
+        <input type="text" name="nome">
+        <button onclick="adicionar()">Adicionar</button>
+    </div>
+
+    <script>
+        //elementos que serão utilizados
+        var ulElement = document.querySelector('#app ul');
+        var inputElement = document.querySelector('#app input');
+        //array de nomes
+        var nomes = ["Diego", "Gabriel", "Lucas"];
+        //função para percorrer cada nome descrito no array
+        function percorreNomes(){
+            //tudo oq estiver dentro da <ul> ficará como vazio
+            ulElement.innerHTML = '';
+            //irá percorrer todos os nomes da lista
+            for(nome of nomes){
+                //cria o elemento <li>
+                var liElement = document.createElement('li');
+                //pega o nome e passa para a variável liText
+                var liText = document.createTextNode(nome);
+                //adiciona o nome no elemento <li>
+                liElement.appendChild(liText);
+                //adiciona o elemento <li> no elemento <ul>
+                ulElement.appendChild(liElement);
+            }
+        }
+
+        percorreNomes();
+
+        function adicionar(){
+            //pega o valor/nome que está dentro do input
+            var liText = inputElement.value;
+            //adicionar o valor/nome na última posição do array
+            nomes.push(liText);
+            //deixa o input vazio
+            inputElement.value = '';
+            
+            percorreNomes();
+        }
+    </script>
+</body>
+</html>

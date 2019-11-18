@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button class="botao">Adicione um Elemento</button>
+    </div>
+
+    <script>
+        var btnElement = document.querySelector('button.botao');
+
+        btnElement.onclick = function() {
+            var boxElement = document.createElement('div'); 
+            boxElement.className = 'box';
+            boxElement.style.width = 100;
+            boxElement.style.height = 100;
+            boxElement.style.marginTop = 5;
+            boxElement.style.backgroundColor = 'f00';
+
+            boxElement.addEventListener('mouseover', () => {
+                let newColor = getRandomColor();
+                boxElement.style.backgroundColor = newColor;
+            });
+            document.getElementById('app').appendChild(boxElement);
+        }
+        function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
+</body>
+</html>
