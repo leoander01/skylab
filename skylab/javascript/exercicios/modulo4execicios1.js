@@ -21,9 +21,14 @@
 //selecionando os elementos
 var ulElement = document.querySelector('#app ul');
 var inputElement = document.querySelector('#app input');
+var h1Element = document.querySelector('#app h1');
 
 //buscar o usuário ao clicar no botão
 function buscarUser(){
+    //tudo oq estiver dentro de <h1> ficará como vazio
+    h1Element.innerHTML = '';
+    //tudo oq estiver dentro da <ul> ficará como vazio
+    ulElement.innerHTML = '';
     //inputElement pegará o nome do usuário
     axios.get('https://api.github.com/users/'+inputElement.value+'/repos')
     //vai ser executado se chegar no resolve
@@ -37,10 +42,13 @@ function buscarUser(){
             liElement.appendChild(nameText);
             ulElement.appendChild(liElement);
         }
-
         console.log(response.data);
     })
     .catch(function(error) {
+        //mensagem de erro, caso não encontre nenhum usuário
+        var errorMessage = document.createTextNode('ERROR 404! User '+inputElement.value+' not found!  :(' );
+        //adiciona a mensagem dentro do h1Element
+        h1Element.append(errorMessage);
         console.warn(error);
     });
 }
