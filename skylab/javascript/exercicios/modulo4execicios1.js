@@ -35,7 +35,7 @@ function buscarUser(){
     .then(function(response) {
         //pegar o tamanho do array e passar um for
         for(var i=0; i<response.data.length; i++){
-            //criar o elemento <li>, e pegar o texto que aparecerá na posição do array 
+            //cria o elemento <li>, e pegar o texto que aparecerá na posição do array 
             var liElement = document.createElement('li');
             var nameText = document.createTextNode(response.data[i].name);
             //colocar os valores dentro de <li> e <ul>
